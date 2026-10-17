@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCIENTIA | المرحلة الانتقالية الثانية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #10131b;
+  color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+main { max-width: 650px; width: 100%; }
+video { width: 100%; margin: 20px 0; border-radius: 10px; }
+input, button {
+  padding: 12px;
+  margin: 6px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+input { max-width: 90%; }
+button { cursor: pointer; }
+#message { min-height: 24px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>SCIENTIA</h1>
+  <h2>رائع! لقد تجاوزت المرحلة الثانية بنجاح.</h2>
+  <p>للوصول إلى المرحلة الثالثة، شاهد الفيديو واستخرج كلمة السر.</p>
+
+  <video controls playsinline preload="metadata">
+    <source src="../gate2-video.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو.
+  </video>
+
+  <p>
+    <a href="../gate2-video.mp4" download>تحميل الفيديو</a>
+  </p>
+
+  <form id="passwordForm">
+    <label for="password">أدخل كلمة السر:</label>
+    <br>
+    <input id="password" type="text"
+      placeholder="كلمة السر" required>
+    <button type="submit">عبور</button>
+  </form>
+
+  <p id="message" role="status"></p>
+</main>
+
+<script>
+document.getElementById("passwordForm")
+.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const password =
+    document.getElementById("password").value.trim();
+
+  if (password === "التطور") {
+    document.getElementById("message").textContent =
+      "صحيح! لقد اجتزت المرحلة الانتقالية الثانية.";
+
+    sessionStorage.setItem("scientia_stage3_unlocked", "yes");
+
+    setTimeout(function() {
+      window.location.href = "../stage3.html";
+    }, 1200);
+  } else {
+    document.getElementById("message").textContent =
+      "كلمة السر غير صحيحة. أعد مشاهدة الفيديو.";
+  }
+});
+</script>
+</body>
+</html>
