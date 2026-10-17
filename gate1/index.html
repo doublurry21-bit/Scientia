@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCIENTIA | Transition 01</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 30px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #080d18;
+      color: #e8edf7;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      padding: 32px;
+      border: 1px solid #293750;
+      border-radius: 14px;
+      background: #111a2a;
+      box-shadow: 0 15px 50px #0005;
+    }
+
+    .label {
+      text-align: center;
+      color: #8fa8cc;
+      font: 12px Arial, sans-serif;
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(25px, 5vw, 38px);
+      font-weight: normal;
+      margin: 0 0 18px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #b5c1d4;
+      line-height: 1.8;
+      font-family: Arial, sans-serif;
+      margin-bottom: 28px;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: 440px;
+      background: #05080e;
+      border-radius: 8px;
+      border: 1px solid #34435c;
+    }
+
+    .download {
+      display: block;
+      margin-top: 12px;
+      text-align: center;
+      color: #a9c7f5;
+      font: 14px Arial, sans-serif;
+    }
+
+    .divider {
+      height: 1px;
+      background: #293750;
+      margin: 30px 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: clamp(25px, 5vw, 34px);
+      font-weight: normal;
+      margin-bottom: 24px;
+    }
+
+    form {
+      max-width: 420px;
+      margin: auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      background: #080d18;
+      border: 1px solid #40516c;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #91b7f0;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 14px;
+      padding: 15px;
+      border: 0;
+      border-radius: 6px;
+      background: #dce7f8;
+      color: #101827;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffffff;
+    }
+
+    #message {
+      min-height: 24px;
+      margin-top: 16px;
+      text-align: center;
+      font: 14px Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      color: #687c9b;
+      font: 11px Arial, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 23px 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <div class="label">SCIENTIA ARCHIVE · 01</div>
+
+    <h1>The First Fragment Is Unlocked</h1>
+
+    <p class="intro">
+      You have passed the first stage.
+      Watch the following video carefully.
+      The next answer lies within.
+    </p>
+
+    <video controls playsinline preload="metadata">
+      <source
+        src="../snaptik_7662385640494910734_v3.mp4"
+        type="video/mp4">
+      Your browser does not support this video.
+    </video>
+
+    <a
+      class="download"
+      href="../snaptik_7662385640494910734_v3.mp4"
+      download>
+      Download the video
+    </a>
+
+    <div class="divider"></div>
+
+    <h2>I am the ___ ___</h2>
+
+    <form id="answerForm">
+      <input
+        id="answer"
+        type="text"
+        placeholder="Enter the two words..."
+        autocomplete="off"
+        required>
+
+      <button type="submit">Unlock the next stage</button>
+
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="footer">KNOWLEDGE IS THE KEY</div>
+
+  </main>
+
+  <script>
+    document.getElementById("answerForm").addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
+
+        const answer = document
+          .getElementById("answer")
+          .value
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, " ");
+
+        const message = document.getElementById("message");
+
+        if (answer === "chosen one") {
+          message.textContent = "Correct. Proceeding to the next stage...";
+
+          setTimeout(function () {
+            window.location.href = "../stage2.html";
+          }, 800);
+        } else {
+          message.textContent =
+            "Incorrect answer. Watch the video carefully and try again.";
+        }
+      }
+    );
+  </script>
+</body>
+</html>
