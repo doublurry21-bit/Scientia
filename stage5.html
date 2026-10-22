@@ -124,7 +124,7 @@
 </main>
 <script>
   // Accepted clue answers; normalize Arabic diacritics and common spacing.
-  const answers = ["ساحرة", "هولمز", "كافكا", "داروين", "غراب", "قط"];
+  const answers = ["witch", "Holmes", "kafka", "darwin", "غراب", "قط"];
   const solved = [false, false, false, false, false, false];
   function normalize(value) {
     return value.trim().replace(/[\u064B-\u065F\u0670\u0640]/g, "").replace(/\s+/g, "").toLowerCase();
