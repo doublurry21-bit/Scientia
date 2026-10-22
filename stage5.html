@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCIENTIA — Stage Five</title>
+<style>
+  :root { color-scheme: dark; --bg:#080b10; --panel:#101722; --line:#263344; --text:#e8edf4; --muted:#9ba9ba; --accent:#9eb7d3; --good:#9ed9b0; --bad:#e5a0a0; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:radial-gradient(ellipse at top,#172333 0%,var(--bg) 58%); color:var(--text); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { width:min(920px,100%); margin:auto; padding:28px 16px 60px; }
+  header { text-align:center; margin-bottom:30px; }
+  .eyebrow { color:var(--accent); letter-spacing:.22em; font-size:.78rem; direction:ltr; }
+  h1 { font-size:clamp(1.8rem,5vw,2.7rem); margin:10px 0; letter-spacing:.04em; }
+  .intro { color:var(--muted); line-height:1.8; max-width:650px; margin:0 auto; }
+  .clues { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  .clue { background:rgba(16,23,34,.92); border:1px solid var(--line); border-radius:14px; padding:14px; min-width:0; }
+  .clue h2 { font-size:1rem; font-weight:600; margin:0 0 10px; color:#dce7f4; }
+  video,.clue img { display:block; width:100%; border-radius:9px; background:#05070a; max-height:280px; object-fit:contain; }
+  .clue img { aspect-ratio:16/9; }
+  .answer-row { display:flex; gap:8px; margin-top:12px; }
+  input { min-width:0; flex:1; padding:12px; border:1px solid #35465a; border-radius:8px; background:#090e15; color:var(--text); font:inherit; }
+  input:focus { outline:2px solid #728da9; outline-offset:1px; }
+  button { padding:11px 16px; border:1px solid #637d99; border-radius:8px; background:#23364b; color:#f3f7fb; font:inherit; cursor:pointer; }
+  button:hover { background:#2c435c; }
+  button:disabled { opacity:.6; cursor:default; }
+  .feedback { min-height:1.5em; margin:8px 0 0; font-size:.9rem; color:var(--muted); }
+  .feedback.good { color:var(--good); }
+  .feedback.bad { color:var(--bad); }
+  .vault { display:none; margin:30px auto 0; padding:24px 18px; width:min(580px,100%); text-align:center; border:1px solid #405168; border-radius:16px; background:linear-gradient(180deg,#121c29,#0a0f16); }
+  .vault.show { display:block; animation:appear .45s ease-out; }
+  .vault-art { width:min(300px,85%); height:auto; display:block; margin:0 auto 18px; filter:drop-shadow(0 12px 18px #0008); }
+  .vault h2 { margin:0 0 8px; letter-spacing:.12em; direction:ltr; }
+  .vault p { color:var(--muted); margin:0 0 18px; }
+  .number-puzzle { direction:ltr; text-align:center; margin:20px auto; max-width:440px; }
+  .equation { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:7px; font-size:1.15rem; }
+  .number-input { flex:0 1 72px; width:72px; text-align:center; direction:ltr; padding:10px 5px; }
+  .number-input.wide { flex-basis:78px; width:78px; }
+  .number-input.correct { border:2px solid #4ade80 !important; background:#10291b !important; color:#9ef0b2 !important; }
+  .number-input.incorrect { border:2px solid #f87171 !important; background:#301416 !important; color:#ffaaaa !important; }
+  #vault-result { width:100%; max-width:250px; text-align:center; direction:ltr; }
+  #vault-result.correct { border:2px solid #4ade80 !important; background:#10291b !important; color:#9ef0b2 !important; }
+  #vault-result.incorrect { border:2px solid #f87171 !important; background:#301416 !important; color:#ffaaaa !important; }
+  .treasure { display:none; margin-top:18px; padding:14px; border:1px solid #47634e; border-radius:10px; color:var(--good); }
+  .treasure.show { display:block; }
+  .note { text-align:center; color:#77889b; font-size:.8rem; margin-top:24px; }
+  @keyframes appear { from { opacity:0; transform:translateY(10px); } to {opacity:1;transform:translateY(0)} }
+  @media (max-width:620px) { .clues { grid-template-columns:1fr; } .answer-row button { padding-inline:12px; } main { padding-inline:12px; } .equation { gap:5px; font-size:1rem; } .number-input { flex-basis:58px; width:58px; } .number-input.wide { flex-basis:68px; width:68px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">SCIENTIA · EUREKA SOCIETY</div>
+    <h1>THE FIFTH FRAGMENT</h1>
+    <p class="intro">افحص كل مقطع وصورة بعناية. استخرج الكلمات المطلوبة بالترتيب، ثم تابع إلى القفل الأخير.</p>
+  </header>
+
+  <section class="clues" aria-label="Clues">
+    <article class="clue">
+      <h2>Fragment 01</h2>
+      <video controls playsinline preload="metadata"><source src="snaptik_7651270052884253974_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="answer-row"><input id="a1" autocomplete="off" placeholder="Enter the word" aria-label="Enter the word"><button type="button" onclick="checkWord(1)">تحقّق</button></div>
+      <p class="feedback" id="f1" aria-live="polite"></p>
+    </article>
+    <article class="clue">
+      <h2>Fragment 02</h2>
+      <video controls playsinline preload="metadata"><source src="snaptik_7656494877424782614_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="answer-row"><input id="a2" autocomplete="off" placeholder="Enter the word" aria-label="Enter the word"><button type="button" onclick="checkWord(2)">تحقّق</button></div>
+      <p class="feedback" id="f2" aria-live="polite"></p>
+    </article>
+    <article class="clue">
+      <h2>Fragment 03</h2>
+      <video controls playsinline preload="metadata"><source src="snaptik_7669780616904314143_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="answer-row"><input id="a3" autocomplete="off" placeholder="Enter the word" aria-label="Enter the word"><button type="button" onclick="checkWord(3)">تحقّق</button></div>
+      <p class="feedback" id="f3" aria-live="polite"></p>
+    </article>
+    <article class="clue">
+      <h2>Fragment 04</h2>
+      <video controls playsinline preload="metadata"><source src="snaptik_7675304051529075975_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="answer-row"><input id="a4" autocomplete="off" placeholder="Enter the word" aria-label="Enter the word"><button type="button" onclick="checkWord(4)">تحقّق</button></div>
+      <p class="feedback" id="f4" aria-live="polite"></p>
+    </article>
+    <article class="clue">
+      <h2>Fragment 05</h2>
+      <img src="882d997fa46b928ce004e7f1f48c8f6d.jpg" alt="Fragment image five">
+      <div class="answer-row"><input id="a5" autocomplete="off" placeholder="Enter the word" aria-label="Enter the word"><button type="button" onclick="checkWord(5)">تحقّق</button></div>
+      <p class="feedback" id="f5" aria-live="polite"></p>
+    </article>
+    <article class="clue">
+      <h2>Fragment 06</h2>
+      <img src="28340c0717bcec5e937de9f17f2bef8d.jpg" alt="Fragment image six">
+      <div class="answer-row"><input id="a6" autocomplete="off" placeholder="Enter the word" aria-label="Enter the word"><button type="button" onclick="checkWord(6)">تحقّق</button></div>
+      <p class="feedback" id="f6" aria-live="polite"></p>
+    </article>
+  </section>
+
+  <section class="vault" id="vault" aria-labelledby="vault-title">
+    <svg class="vault-art" viewBox="0 0 320 250" role="img" aria-label="صورة خزينة معدنية مغلقة" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d0d8df"/><stop offset=".25" stop-color="#596a7b"/><stop offset=".55" stop-color="#a6b3bf"/><stop offset="1" stop-color="#263443"/></linearGradient>
+        <linearGradient id="door" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#718293"/><stop offset=".5" stop-color="#263747"/><stop offset="1" stop-color="#111b26"/></linearGradient>
+        <radialGradient id="dial"><stop offset="0" stop-color="#dce4eb"/><stop offset=".45" stop-color="#758595"/><stop offset="1" stop-color="#172330"/></radialGradient>
+      </defs>
+      <ellipse cx="160" cy="228" rx="122" ry="12" fill="#000" opacity=".45"/>
+      <rect x="42" y="17" width="236" height="207" rx="15" fill="#151f2b" stroke="#9ba9b7" stroke-width="4"/>
+      <rect x="53" y="28" width="214" height="185" rx="10" fill="url(#steel)" stroke="#253443" stroke-width="3"/>
+      <rect x="67" y="42" width="186" height="157" rx="7" fill="url(#door)" stroke="#bac4cd" stroke-width="2"/>
+      <rect x="76" y="51" width="168" height="139" rx="5" fill="none" stroke="#0a1119" stroke-width="3"/>
+      <circle cx="160" cy="111" r="39" fill="#0d1721" stroke="#c1cbd4" stroke-width="5"/>
+      <circle cx="160" cy="111" r="29" fill="url(#dial)" stroke="#1b2b3a" stroke-width="3"/>
+      <circle cx="160" cy="111" r="5" fill="#e4eaf0"/>
+      <path d="M160 88 L165 108 L160 111 L155 108 Z" fill="#f0f4f8"/>
+      <g stroke="#dbe3e9" stroke-width="2" opacity=".9"><path d="M160 85v-5 M179 92l4-4 M186 111h6 M179 130l4 4 M160 137v6 M141 130l-4 4 M134 111h-6 M141 92l-4-4"/></g>
+      <rect x="83" y="82" width="9" height="58" rx="3" fill="url(#steel)" stroke="#111d29" stroke-width="2"/>
+      <rect x="228" y="82" width="9" height="58" rx="3" fill="url(#steel)" stroke="#111d29" stroke-width="2"/>
+      <circle cx="85" cy="57" r="3" fill="#e2e8ee"/><circle cx="235" cy="57" r="3" fill="#e2e8ee"/>
+      <circle cx="85" cy="181" r="3" fill="#e2e8ee"/><circle cx="235" cy="181" r="3" fill="#e2e8ee"/>
+      <path d="M112 157h96" stroke="#9aabba" stroke-width="2" opacity=".7"/>
+    </svg>
+    <h2 id="vault-title">THE VAULT</h2>
+    <p>Place the six numbers in the correct order.</p>
+
+    <div class="number-puzzle" id="number-puzzle">
+      <div class="equation">
+        (<input class="number-input" id="n1" inputmode="numeric" placeholder="__" aria-label="First number"> ×
+        <input class="number-input" id="n2" inputmode="numeric" placeholder="__" aria-label="Second number">)
+        +
+        (<input class="number-input" id="n3" inputmode="numeric" placeholder="__" aria-label="Third number"> ×
+        <input class="number-input" id="n4" inputmode="numeric" placeholder="__" aria-label="Fourth number">)
+        +
+        <input class="number-input wide" id="n5" inputmode="numeric" placeholder="__" aria-label="Fifth number">
+        −
+        <input class="number-input" id="n6" inputmode="numeric" placeholder="__" aria-label="Sixth number">
+      </div>
+      <p style="margin-top:22px;">Enter the result to unlock the vault.</p>
+      <input id="vault-result" inputmode="numeric" placeholder="Enter the result..." aria-label="Enter the result">
+      <div style="margin-top:14px;"><button id="unlock-button" type="button" onclick="checkCode()">UNLOCK</button></div>
+      <p class="feedback" id="vault-feedback" aria-live="polite"></p>
+    </div>
+    <div class="treasure" id="treasure">VAULT UNLOCKED. The fifth fragment is complete.</div>
+  </section>
+  <p class="note">FRAGMENT 05 · ACCESS IS EARNED, NOT GIVEN</p>
+</main>
+<script>
+  const answers = ["witch", "holmes", "kafka", "darwin", "غراب", "قط"];
+  const solved = [false, false, false, false, false, false];
+
+  function normalize(value) {
+    return value.trim().replace(/[\u064B-\u065F\u0670\u0640]/g, "").replace(/\s+/g, "").toLowerCase();
+  }
+
+  function checkWord(n) {
+    const input = document.getElementById("a" + n);
+    const feedback = document.getElementById("f" + n);
+    if (normalize(input.value) === normalize(answers[n - 1])) {
+      solved[n - 1] = true;
+      input.disabled = true;
+      feedback.textContent = "Correct.";
+      feedback.className = "feedback good";
+      input.parentElement.querySelector("button").disabled = true;
+      if (solved.every(Boolean)) {
+        const vault = document.getElementById("vault");
+        vault.classList.add("show");
+        vault.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    } else {
+      solved[n - 1] = false;
+      feedback.textContent = "Incorrect answer. Try again.";
+      feedback.className = "feedback bad";
+    }
+  }
+
+  function checkCode() {
+    const correctNumbers = ["60", "5", "20", "4", "1000", "100"];
+    let numbersCorrect = true;
+    correctNumbers.forEach((correct, index) => {
+      const input = document.getElementById("n" + (index + 1));
+      input.classList.remove("correct", "incorrect");
+      if (input.value.trim() === correct) input.classList.add("correct");
+      else { input.classList.add("incorrect"); numbersCorrect = false; }
+    });
+
+    const resultInput = document.getElementById("vault-result");
+    const feedback = document.getElementById("vault-feedback");
+    const resultCorrect = resultInput.value.trim() === "1280";
+    resultInput.classList.remove("correct", "incorrect");
+    resultInput.classList.add(resultCorrect ? "correct" : "incorrect");
+
+    if (numbersCorrect && resultCorrect) {
+      feedback.textContent = "Access granted.";
+      feedback.className = "feedback good";
+      feedback.style.whiteSpace = "normal";
+      document.getElementById("treasure").classList.add("show");
+      document.querySelectorAll(".number-input").forEach(input => input.disabled = true);
+      resultInput.disabled = true;
+      document.getElementById("unlock-button").disabled = true;
+    } else {
+      feedback.textContent = "Incorrect Result\nThe numbers are incorrect. Therefore, the result is incorrect.\nTry again.";
+      feedback.className = "feedback bad";
+      feedback.style.whiteSpace = "pre-line";
+    }
+  }
+
+  document.querySelectorAll(".clue input").forEach((input, index) => {
+    input.addEventListener("keydown", event => { if (event.key === "Enter") checkWord(index + 1); });
+  });
+  document.querySelectorAll(".number-input").forEach(input => {
+    input.addEventListener("keydown", event => { if (event.key === "Enter") checkCode(); });
+  });
+  document.getElementById("vault-result").addEventListener("keydown", event => { if (event.key === "Enter") checkCode(); });
+</script>
+</body>
+</html>
