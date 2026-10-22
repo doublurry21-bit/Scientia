@@ -37,6 +37,18 @@
   .note { text-align:center; color:#77889b; font-size:.8rem; margin-top:24px; }
   @keyframes appear { from { opacity:0; transform:translateY(10px); } to {opacity:1;transform:translateY(0)} }
   @media (max-width:620px) { .clues { grid-template-columns:1fr; } .answer-row button { padding-inline:12px; } main { padding-inline:12px; } }
+
+.number-input.correct {
+  border: 2px solid #4ade80 !important;
+  background: #10291b !important;
+  color: #9ef0b2 !important;
+}
+
+.number-input.incorrect {
+  border: 2px solid #f87171 !important;
+  background: #301416 !important;
+  color: #ffaaaa !important;
+}
 </style>
 </head>
 <body>
@@ -86,12 +98,38 @@
     </article>
   </section>
 
+<p>Place the six numbers in the correct order.</p>
+
+<div id="number-puzzle" style="direction:ltr; text-align:center; margin:20px auto; max-width:440px;">
+  <div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:7px; font-size:1.15rem;">
+    (<input class="number-input" id="n1" inputmode="numeric" placeholder="__" aria-label="First number" style="width:72px; text-align:center;">
+    ×
+    <input class="number-input" id="n2" inputmode="numeric" placeholder="__" aria-label="Second number" style="width:72px; text-align:center;">)
+    +
+    (<input class="number-input" id="n3" inputmode="numeric" placeholder="__" aria-label="Third number" style="width:72px; text-align:center;">
+    ×
+    <input class="number-input" id="n4" inputmode="numeric" placeholder="__" aria-label="Fourth number" style="width:72px; text-align:center;">)
+    +
+    <input class="number-input" id="n5" inputmode="numeric" placeholder="__" aria-label="Fifth number" style="width:78px; text-align:center;">
+    −
+    <input class="number-input" id="n6" inputmode="numeric" placeholder="__" aria-label="Sixth number" style="width:72px; text-align:center;">
+  </div>
+
+  <p style="margin-top:22px;">Enter the result to unlock the vault.</p>
+
+  <input id="vault-result" inputmode="numeric" placeholder="Enter the result..." aria-label="Enter the result" style="width:100%; max-width:250px; text-align:center; direction:ltr;">
+
+  <div style="margin-top:14px;">
+    <button type="button" onclick="checkCode()">UNLOCK</button>
+  </div>
+
+  <p class="feedback" id="vault-feedback" aria-live="polite"></p>
+</div>
+
+<div class="treasure" id="treasure">VAULT UNLOCKED. The fifth fragment is complete.</div>
   <section class="vault" id="vault" aria-labelledby="vault-title">
     <svg class="vault-art" viewBox="0 0 320 250" role="img" aria-label="صورة خزينة معدنية مغلقة" xmlns="http://www.w3.org/2000/svg">
-      <div style="margin: 18px auto; max-width: 350px; padding: 16px; border: 1px solid #263344; border-radius: 10px; direction: ltr; text-align: center;">
-  <p style="color: #9ba9ba; margin-bottom: 12px;">Calculate the final result</p>
-  <p style="font-size: 1.2rem; letter-spacing: 1px; color: #e8edf4;">
-    (60 × 5) + (20 × 4) + 1000 − 100
+
   </p>
 </div>
       <defs>
@@ -135,40 +173,54 @@
   function normalize(value) {
     return value.trim().replace(/[\u064B-\u065F\u0670\u0640]/g, "").replace(/\s+/g, "").toLowerCase();
   }
-  function checkWord(n) {
-    const input = document.getElementById("a" + n);
-    const feedback = document.getElementById("f" + n);
-    if (normalize(input.value) === normalize(answers[n - 1])) {
-      solved[n - 1] = true;
-      input.disabled = true;
-      feedback.textContent = "Correct.";
-      feedback.className = "feedback good";
-      input.parentElement.querySelector("button").disabled = true;
-      if (solved.every(Boolean)) {
-        document.getElementById("vault").classList.add("show");
-        document.getElementById("vault").scrollIntoView({behavior:"smooth", block:"center"});
-      }
+  
+function checkCode() {
+  const correctNumbers = ["60", "5", "20", "4", "1000", "100"];
+  let numbersCorrect = true;
+
+  correctNumbers.forEach((correct, index) => {
+    const input = document.getElementById("n" + (index + 1));
+    const value = input.value.trim();
+
+    input.classList.remove("correct", "incorrect");
+
+    if (value === correct) {
+      input.classList.add("correct");
     } else {
-      solved[n - 1] = false;
-      feedback.textContent = "Incorrect answer. Try again.";
-      feedback.className = "feedback bad";
+      input.classList.add("incorrect");
+      numbersCorrect = false;
     }
-  }
-  function checkCode() {
-    const input = document.getElementById("vault-code");
-    const feedback = document.getElementById("vault-feedback");
-    if (input.value.trim() === "1280") {
-      feedback.textContent = "Access granted.";
-      feedback.className = "feedback good";
-      document.getElementById("treasure").classList.add("show");
+  });
+
+  const resultInput = document.getElementById("vault-result");
+  const feedback = document.getElementById("vault-feedback");
+  const resultCorrect = resultInput.value.trim() === "1280";
+
+  resultInput.style.border = resultCorrect
+    ? "2px solid #4ade80"
+    : "2px solid #f87171";
+
+  resultInput.style.background = resultCorrect
+    ? "#10291b"
+    : "#301416";
+
+  if (numbersCorrect && resultCorrect) {
+    feedback.textContent = "Access granted.";
+    feedback.className = "feedback good";
+    document.getElementById("treasure").classList.add("show");
+
+    document.querySelectorAll(".number-input").forEach(input => {
       input.disabled = true;
-    } else {
-      feedback.textContent = "Incorrect code. The vault remains locked.";
-      feedback.className = "feedback bad";
-    }
+    });
+
+    resultInput.disabled = true;
+  } else {
+    feedback.textContent =
+      "Incorrect Result\nThe numbers are incorrect. Therefore, the result is incorrect.\nTry again.";
+    feedback.className = "feedback bad";
+    feedback.style.whiteSpace = "pre-line";
   }
-  document.querySelectorAll(".clue input").forEach((input, index) => {
-    input.addEventListener("keydown", event => { if (event.key === "Enter") checkWord(index + 1); });
+}
   });
 </script>
 </body>
