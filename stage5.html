@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>SCIENTIA | Stage 5 — The Vault</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#111a2b;--panel2:#172238;--line:#293750;--text:#edf3ff;--muted:#a9b7ce;--accent:#76d7d0;--bad:#ff8f96;--good:#9de2b0;--gold:#e7c27b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#16243a 0,#080d18 58%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.65}main{max-width:1050px;margin:auto;padding:18px 13px 52px}.hero,.panel,.item,.vault{background:rgba(17,26,43,.95);border:1px solid var(--line);border-radius:18px}.hero{padding:23px;margin-bottom:16px;position:relative;overflow:hidden}.eyebrow{letter-spacing:.12em;color:var(--accent);font-size:.78rem;font-weight:800}.hero:after{content:"05";position:absolute;left:12px;top:-30px;font-size:9rem;font-weight:900;color:#ffffff08;pointer-events:none}.hero h1{font-size:clamp(1.8rem,6vw,3rem);line-height:1.2;margin:8px 0}.muted{color:var(--muted)}.panel{padding:17px;margin:16px 0}.panel h2{margin:0 0 8px;font-size:1.25rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.item{overflow:hidden;min-width:0}.media{width:100%;aspect-ratio:16/9;display:block;object-fit:cover;background:#080e18;border-bottom:1px solid var(--line)}video.media{object-fit:contain}.item-content{padding:13px}.item-title{font-weight:850;margin-bottom:8px}.label{display:block;font-size:.92rem;margin:8px 0 5px}.answer{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:#080e18;color:var(--text);font:inherit;outline:none}.answer:focus{border-color:var(--accent);box-shadow:0 0 0 2px #76d7d022}.answer.wrong{border-color:var(--bad);box-shadow:0 0 0 2px #ff8f9622}.answer.correct{border-color:var(--good)}.item-error{display:none;color:var(--bad);font-size:.88rem;margin-top:6px}.item-error.show{display:block}.item-success{display:none;color:var(--good);font-size:.88rem;margin-top:6px}.item-success.show{display:block}.btn{border:1px solid #4c7183;background:#183344;color:#f2ffff;border-radius:12px;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.status{margin-top:12px;min-height:1.5em;color:var(--muted);font-size:.94rem}.success-banner{display:none;border:1px solid #427a5a;background:#10251c;border-radius:12px;padding:13px;margin-top:14px;color:var(--good);font-weight:800}.success-banner.show{display:block}.vault{display:none;margin-top:18px;padding:18px;border-color:#5d5137;background:linear-gradient(160deg,rgba(34,30,23,.97),rgba(17,26,43,.98))}.vault.show{display:block}.vault-heading{text-align:center}.vault-heading .icon{font-size:2.5rem}.vault-heading h2{margin:0;font-size:1.7rem;color:var(--gold)}.vault-heading p{margin:5px 0 14px}.equation{direction:ltr;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;margin:18px 0}.equation input{width:90px;max-width:calc(100vw - 90px);text-align:center;direction:ltr;font-weight:800;font-variant-numeric:tabular-nums}.op{font-size:1.25rem;font-weight:900;color:var(--gold)}.equation .paren{font-size:1.4rem}.result-line{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:15px}.result-line input{max-width:180px;text-align:center;direction:ltr;font-size:1.2rem;font-weight:900;letter-spacing:.12em}.result-message{display:none;margin-top:16px;padding:14px;border:1px solid #9a5555;background:#281719;border-radius:12px;color:#ffd9dc;direction:ltr;text-align:left}.result-message.show{display:block}.result-message strong{display:block;margin-bottom:5px}.vault-open{display:none;text-align:center;padding:18px;margin-top:16px;border:1px solid #427a5a;border-radius:12px;background:#10251c}.vault-open.show{display:block}.vault-open h3{margin:0 0 8px;color:var(--good)}.final-note{display:none;margin-top:16px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#080e18}.final-note.show{display:block}.final-note h3{margin:0 0 8px;color:var(--gold)}.foot{text-align:center;color:#7f90a9;font-size:.82rem;margin-top:22px} @media(min-width:720px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero,.panel{padding:20px}}@media(max-width:380px){.equation{gap:4px}.equation input{width:70px;padding:9px 4px}.panel{padding:13px}.item-content{padding:10px}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <div class="eyebrow">SCIENTIA / INVESTIGATION ARCHIVE</div>
+  <h1>THE SIX FRAGMENTS</h1>
+  <p>ستة أدلة، ست كلمات. أدخل إجابة كل عنصر بالترتيب، ثم افتح الخزينة بحل العملية الحسابية.</p>
+</header>
+<section class="panel" aria-labelledby="fragmentsTitle">
+  <h2 id="fragmentsTitle">01 / The Fragments</h2>
+  <p class="muted">أجب عن العناصر الستة. إذا كانت إجابة خاطئة فسيُحدَّد العنصر نفسه لتصحيحه.</p>
+  <div class="grid" id="fragmentGrid">
+    <article class="item" data-answer="witch" data-kind="video">
+      <video class="media" controls playsinline preload="metadata"><source src="snaptik_7651270052884253974_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="item-content"><div class="item-title">Fragment 01</div><label class="label" for="answer1">Enter the word</label><input class="answer" id="answer1" autocomplete="off" spellcheck="false"><div class="item-error" aria-live="polite">Incorrect word. Check this video.</div><div class="item-success">✓ Correct</div></div>
+    </article>
+    <article class="item" data-answer="holmes" data-kind="video">
+      <video class="media" controls playsinline preload="metadata"><source src="snaptik_7656494877424782614_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="item-content"><div class="item-title">Fragment 02</div><label class="label" for="answer2">Enter the word</label><input class="answer" id="answer2" autocomplete="off" spellcheck="false"><div class="item-error" aria-live="polite">Incorrect word. Check this video.</div><div class="item-success">✓ Correct</div></div>
+    </article>
+    <article class="item" data-answer="kafka" data-kind="video">
+      <video class="media" controls playsinline preload="metadata"><source src="snaptik_7669780616904314143_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="item-content"><div class="item-title">Fragment 03</div><label class="label" for="answer3">Enter the word</label><input class="answer" id="answer3" autocomplete="off" spellcheck="false"><div class="item-error" aria-live="polite">Incorrect word. Check this video.</div><div class="item-success">✓ Correct</div></div>
+    </article>
+    <article class="item" data-answer="darwin" data-kind="video">
+      <video class="media" controls playsinline preload="metadata"><source src="snaptik_7675304051529075975_v3.mp4" type="video/mp4">Your browser does not support video.</video>
+      <div class="item-content"><div class="item-title">Fragment 04</div><label class="label" for="answer4">Enter the word</label><input class="answer" id="answer4" autocomplete="off" spellcheck="false"><div class="item-error" aria-live="polite">Incorrect word. Check this video.</div><div class="item-success">✓ Correct</div></div>
+    </article>
+    <article class="item" data-answer="غراب" data-kind="image">
+      <img class="media" src="882d997fa46b928ce004e7f1f48c8f6d.jpg" alt="Image clue 1" loading="lazy">
+      <div class="item-content"><div class="item-title">Fragment 05</div><label class="label" for="answer5" lang="ar">أدخل الكلمة</label><input class="answer" id="answer5" autocomplete="off" spellcheck="false" lang="ar"><div class="item-error" aria-live="polite">الكلمة غير صحيحة. تحقق من هذه الصورة.</div><div class="item-success">✓ صحيح</div></div>
+    </article>
+    <article class="item" data-answer="قط" data-kind="image">
+      <img class="media" src="28340c0717bcec5e937de9f17f2bef8d.jpg" alt="Image clue 2" loading="lazy">
+      <div class="item-content"><div class="item-title">Fragment 06</div><label class="label" for="answer6" lang="ar">أدخل الكلمة</label><input class="answer" id="answer6" autocomplete="off" spellcheck="false" lang="ar"><div class="item-error" aria-live="polite">الكلمة غير صحيحة. تحقق من هذه الصورة.</div><div class="item-success">✓ صحيح</div></div>
+    </article>
+  </div>
+  <div class="actions"><button class="btn" id="checkWords" type="button">Check Answers</button></div>
+  <div class="status" id="wordStatus" role="status" aria-live="polite"></div>
+  <div class="success-banner" id="allCorrect">✓ All six words are correct. The vault is now available.</div>
+</section>
+<section class="vault" id="vault" aria-labelledby="vaultTitle">
+  <div class="vault-heading"><div class="icon" aria-hidden="true">▣</div><h2 id="vaultTitle">THE VAULT</h2><p class="muted">Place the six values in order, then enter the result.</p></div>
+  <p class="muted" style="text-align:center">استخدم قيم أبجد هوز بالترتيب المستخرج من الكلمات الست.</p>
+  <div class="equation" aria-label="(number one times number two) plus (number three times number four) plus number five minus number six">
+    <span class="op paren">(</span><input class="answer" id="n1" inputmode="numeric" aria-label="First number" autocomplete="off"><span class="op">×</span><input class="answer" id="n2" inputmode="numeric" aria-label="Second number" autocomplete="off"><span class="op paren">)</span>
+    <span class="op">+</span><span class="op paren">(</span><input class="answer" id="n3" inputmode="numeric" aria-label="Third number" autocomplete="off"><span class="op">×</span><input class="answer" id="n4" inputmode="numeric" aria-label="Fourth number" autocomplete="off"><span class="op paren">)</span>
+    <span class="op">+</span><input class="answer" id="n5" inputmode="numeric" aria-label="Fifth number" autocomplete="off"><span class="op">−</span><input class="answer" id="n6" inputmode="numeric" aria-label="Sixth number" autocomplete="off">
+  </div>
+  <div class="result-line"><label for="finalResult">Result</label><input class="answer" id="finalResult" inputmode="numeric" autocomplete="off" aria-label="Calculation result"><button class="btn" id="checkVault" type="button">Unlock</button></div>
+  <div class="result-message" id="resultMessage" role="alert" aria-live="assertive"><strong>Incorrect Result</strong><span>The numbers are incorrect. Therefore, the result is incorrect.</span><br><span>Try again.</span></div>
+  <div class="vault-open" id="vaultOpen"><h3>✓ VAULT UNLOCKED</h3><p>Correct. The result is 1280.</p></div>
+</section>
+<p class="foot">SCIENTIA · EUREKA SOCIETY</p>
+</main>
+<script>
+(() => {
+  const cards = [...document.querySelectorAll('.item')];
+  const checkWords = document.getElementById('checkWords');
+  const wordStatus = document.getElementById('wordStatus');
+  const allCorrect = document.getElementById('allCorrect');
+  const vault = document.getElementById('vault');
+  let wordsUnlocked = false;
+
+  function normalize(value, kind) {
+    let result = value.trim().normalize('NFC');
+    if (kind === 'video') result = result.toLocaleLowerCase('en-US').replace(/\s+/g, ' ');
+    else result = result.replace(/[\u064B-\u065F\u0670\u0640]/g, '').replace(/\s+/g, '');
+    return result;
+  }
+
+  function checkOne(card) {
+    const input = card.querySelector('input.answer');
+    const expected = card.dataset.answer;
+    const correct = normalize(input.value, card.dataset.kind) === expected;
+    input.classList.toggle('wrong', !correct);
+    input.classList.toggle('correct', correct);
+    card.querySelector('.item-error').classList.toggle('show', !correct);
+    card.querySelector('.item-success').classList.toggle('show', correct);
+    input.setAttribute('aria-invalid', String(!correct));
+    return correct;
+  }
+
+  checkWords.addEventListener('click', () => {
+    const outcomes = cards.map(checkOne);
+    const firstWrong = outcomes.indexOf(false);
+    if (firstWrong !== -1) {
+      wordStatus.textContent = 'Some answers are incorrect. The incorrect items are marked above.';
+      allCorrect.classList.remove('show');
+      wordsUnlocked = false;
+      vault.classList.remove('show');
+      cards[firstWrong].querySelector('input.answer').focus({preventScroll:true});
+      return;
+    }
+    wordsUnlocked = true;
+    wordStatus.textContent = 'All answers checked successfully.';
+    allCorrect.classList.add('show');
+    vault.classList.add('show');
+    vault.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  cards.forEach(card => {
+    const input = card.querySelector('input.answer');
+    input.addEventListener('input', () => {
+      input.classList.remove('wrong','correct');
+      input.removeAttribute('aria-invalid');
+      card.querySelector('.item-error').classList.remove('show');
+      card.querySelector('.item-success').classList.remove('show');
+      if (wordsUnlocked) {
+        wordsUnlocked = false;
+        allCorrect.classList.remove('show');
+        vault.classList.remove('show');
+        wordStatus.textContent = 'Answers changed. Check all six words again.';
+      }
+    });
+  });
+
+  const numberIds = ['n1','n2','n3','n4','n5','n6'];
+  const correctNumbers = ['60','5','20','4','1000','100'];
+  const resultMessage = document.getElementById('resultMessage');
+  const vaultOpen = document.getElementById('vaultOpen');
+  document.getElementById('checkVault').addEventListener('click', () => {
+    if (!wordsUnlocked) return;
+    const values = numberIds.map(id => document.getElementById(id).value.trim());
+    const valuesCorrect = values.every((value, index) => value === correctNumbers[index]);
+    const resultInput = document.getElementById('finalResult');
+    const resultCorrect = resultInput.value.trim() === '1280';
+    if (!valuesCorrect || !resultCorrect) {
+      resultMessage.classList.add('show');
+      vaultOpen.classList.remove('show');
+      [...numberIds, 'finalResult'].forEach(id => {
+        const input = document.getElementById(id);
+        input.classList.toggle('wrong', id === 'finalResult' ? !resultCorrect : input.value.trim() !== correctNumbers[numberIds.indexOf(id)]);
+      });
+      return;
+    }
+    resultMessage.classList.remove('show');
+    [...numberIds, 'finalResult'].forEach(id => document.getElementById(id).classList.remove('wrong'));
+    vaultOpen.classList.add('show');
+  });
+
+  [...numberIds, 'finalResult'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById(id).classList.remove('wrong');
+      resultMessage.classList.remove('show');
+      vaultOpen.classList.remove('show');
+    });
+  });
+})();
+</script>
+</body>
+</html>
