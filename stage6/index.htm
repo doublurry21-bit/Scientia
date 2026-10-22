@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJECT GENESIS — File 06</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#08090b;
+  color:#dedede;
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.7;
+}
+main{max-width:900px;margin:auto;padding:32px 18px 60px}
+header{border-bottom:1px solid #343434;padding-bottom:22px;margin-bottom:30px}
+h1{font-size:clamp(25px,5vw,38px);letter-spacing:3px;margin:0;color:#f4f4f4}
+h2{font-size:16px;letter-spacing:2px;color:#a7a7a7;font-weight:normal}
+.intro{margin:28px 0}
+.question{font-weight:bold;color:#fff;font-size:19px;margin:22px 0}
+.note{color:#aaa}
+.table-wrap{overflow-x:auto;margin-top:25px;border:1px solid #303030}
+table{width:100%;border-collapse:collapse;font-family:monospace;font-size:14px}
+th,td{padding:9px 12px;border-bottom:1px solid #242424;text-align:left;white-space:nowrap}
+th{background:#17191c;color:#ddd}
+td:first-child{color:#777;width:45px}
+td:nth-child(2){letter-spacing:2px}
+td:nth-child(3){letter-spacing:2px}
+tr:hover{background:#141619}
+.output{margin-top:35px;padding:20px;border:1px solid #383838;background:#0d0e10}
+.binary{font-family:monospace;letter-spacing:2px;overflow-wrap:anywhere;color:#d4d4d4}
+footer{margin-top:45px;color:#777;font-style:italic}
+@media(max-width:500px){
+  main{padding:24px 12px 40px}
+  th,td{padding:8px;font-size:12px}
+  .question{font-size:17px}
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>PROJECT GENESIS</h1>
+  <h2>FILE 06 — GENETIC FORENSICS</h2>
+</header>
+
+<section class="intro">
+  <p>تم العثور على تسلسلين اصطناعيين من الحمض النووي (DNA).</p>
+
+  <p><strong>التسلسل A</strong> هو التسلسل المرجعي، بينما يحتوي
+  <strong>التسلسل B</strong> على استبدالات نيوكليوتيدية متعمّدة.</p>
+
+  <p>لا توجد عمليات إدراج (Insertions) أو حذف (Deletions)،
+  بل استبدالات فقط.</p>
+
+  <p>الاختلافات بين التسلسلين تخفي رسالة.</p>
+
+  <p>قارن القواعد النيتروجينية في المواضع المتناظرة،
+  موضعًا بموضع.</p>
+
+  <p><strong>At each position, ask yourself:</strong></p>
+
+  <p class="question">Are they from the same family or not?</p>
+
+  <p>ستتوصل إلى الرسالة النهائية عندما تحل هذا اللغز.</p>
+</section>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>#</th><th>Sequence A</th><th>Sequence B</th></tr>
+</thead>
+<tbody id="sequences"></tbody>
+</table>
+</div>
+
+<section class="output">
+  <strong>Binary Output</strong>
+  <p class="binary">01................................................</p>
+</section>
+
+<footer>
+  Good luck.<br>
+  Blurry.
+</footer>
+</main>
+
+<script>
+const sequences = [
+["AAGTTTAA","GCTCCCGC"],
+["CAAATTAT","TCGGGCGC"],
+["CTCGATCG","TGTTGCAA"],
+["GTTGAACA","ACGTGGTG"],
+["GGGACACA","ATTGTGAC"],
+["GGTAATGA","ATCGCCAG"],
+["TACGCGTG","CCTAATCT"],
+["GTGATTTC","ACTCCGGT"],
+["CGTGATAG","TTCACGGA"],
+["CGATGTCC","TTCGTCTA"],
+["CTGTTGCC","TCTGGATA"],
+["GTTCAAAT","AGGTCGCG"],
+["TCACCCGA","CACTTTTG"],
+["AGGAGCTC","GATCATGA"],
+["AGTAGTTG","GTCCAGGA"],
+["TAGCAAGG","CCTTCGAT"],
+["TATAACAT","CCGGGTCC"],
+["TCTGCTTG","CACAACCA"],
+["CGCCATTA","TTTAGGGG"],
+["GATTAAAT","ACGGCGGG"],
+["AAGATGCT","GCTGCAAG"],
+["TCTCCTAA","CAGTAGCG"],
+["CGCCCAAA","TTATAGCC"],
+["CGATTTCT","TTCGGCTG"],
+["CTGCTACA","TGATGCTC"],
+["AAATTCCC","GCGGCTAA"],
+["TCATCACG","CTCGTGTT"],
+["CGCCTTGT","TTATGCAG"],
+["AAGAACTA","GCTGGTCC"],
+["ATAATCAT","GGGCGTGC"],
+["AACGGTGT","GCTTACAG"],
+["GCTGCGAA","AAGTTTGC"],
+["CAATGTGA","TCGGTCTG"],
+["TGGTCGAG","CATGTACA"],
+["ATGAATGG","GGTGCGAA"],
+["TGTGCGAA","CAGTTAGG"],
+["CGAAGTGT","TTCGACAG"],
+["CCAAATAG","TAGGCCGA"],
+["TCTAGGAG","CACCATCA"],
+["TTAGCTTT","CGCAACCG"],
+["TCATGCTG","CAGCTACA"],
+["TACACTTC","CCAGAGCA"],
+["GGTTATCG","ATGCCGTA"],
+["GAGGCGAA","ACTTTTCG"],
+["GTGAACGG","AGAGCAAA"],
+["CACTGACA","TGAGAGTC"],
+["TGCAGGAG","CTTGTTCA"],
+["GCGCGTTC","AATTTCGT"],
+["CTGCAGGT","TGTTGAAG"],
+["CGCCCTCT","TTTATGAG"],
+["AGGATGTT","GTACCTGC"],
+["TAATCACC","CCCGTCTA"],
+["TCCCTTAA","CAATCGGG"],
+["CTTCATAC","TGCTGGCA"],
+["TCGCCCTC","CATTAACT"],
+["CGTGCTGC","TTGAACAT"],
+["AGTGGGAT","GTCATTGC"],
+["TTCTTACC","CCAGCGAT"],
+["GCCATCCA","AAAGCATG"],
+["CCAGGCCT","TACATTTC"],
+["CTGCCACG","TGTTTCTA"],
+["CTCTACAA","TGTCGACC"],
+["CTCTAGCG","TGTGGTTT"],
+["TCGGCGCG","CTTTTAAA"],
+["ACAAGTAA","GAGGTGGG"],
+["ATTATTTC","GGGCCGGA"],
+["ATCGGTAT","GCATTGGG"],
+["GAAGCCTA","AGCTAACC"]
+];
+
+const tbody = document.getElementById("sequences");
+
+sequences.forEach((pair, index) => {
+  const row = document.createElement("tr");
+
+  [index + 1, pair[0], pair[1]].forEach(value => {
+    const cell = document.createElement("td");
+    cell.textContent = value;
+    row.appendChild(cell);
+  });
+
+  tbody.appendChild(row);
+});
+</script>
+</body>
+</html>
