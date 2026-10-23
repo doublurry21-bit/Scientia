@@ -247,11 +247,52 @@ function updateEvidence(){
 }
 
 function updateLocks(){
-  const count=hypotheses.filter(([c,,valid])=>{
-    const el=document.getElementById("h-"+c);
-    const chosen=el.value;
-    const correct=valid.includes(chosen);
-    const feedback=document.getElementById("feedback-"+c);
+  const count = hypotheses.filter(([c,,valid]) => {
+    const el = document.getElementById("h-" + c);
+    const chosen = el.value;
+    const correct = valid.includes(chosen);
+    const feedback = document.getElementById("feedback-" + c);
+
+    feedback.textContent = chosen
+      ? (correct
+          ? "اختيار متوافق مع الأدلة."
+          : "هذا الدليل لا يستبعد هذه الفرضية وحده؛ راجع محتواه.")
+      : "اختر الدليل الذي يساعد على استبعاد هذه الفرضية.";
+
+    feedback.style.color = chosen
+      ? (correct ? "var(--good)" : "var(--warn)")
+      : "var(--muted)";
+
+    return correct;
+  }).length;
+
+  document.getElementById("deductionStatus").textContent =
+    `تم تبرير استبعاد ${count} من 19 فرضية منافسة.`;
+
+  document.getElementById("deductionBar").style.width =
+    (count / 19 * 100) + "%";
+
+  const allEvidence = opened.size === 6;
+  const allExcluded = count === 19;
+  const ready = allEvidence && allExcluded;
+
+  document.getElementById("lockStatus").textContent =
+    !allEvidence
+      ? "افتح الأدلة الستة أولًا."
+      : !allExcluded
+        ? `الأدلة مكتملة. اربط الفرضيات بالأدلة (${count}/19) لتفعيل التقديم.`
+        : "اكتمل الملف. يمكنك الآن تثبيت الاستنتاج النهائي.";
+
+  const btn = document.getElementById("submitBtn");
+
+  if (!attemptState.passed &&
+      attemptState.used < 4 &&
+      attemptState.until <= Date.now()) {
+    btn.disabled = !ready;
+  } else {
+    updateAttemptUI();
+  }
+}
 
     feedback.textContent=chosen
       ?(correct?"اختيار متوافق مع الأدلة.":"هذا الدليل لا يستبعد هذه الفرضية وحده؛ راجع محتواه.")
