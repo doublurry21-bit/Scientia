@@ -313,9 +313,10 @@ document.getElementById("submitBtn").addEventListener("click",()=>{
     saveAttemptState();
     updateAttemptUI();
 
-    setTimeout(() => {
-      window.location.href = 'https://doublurry21-bit.github.io/Scientia/gate4/';
-    }, 2000);
+    window.location.replace(
+  'https://doublurry21-bit.github.io/Scientia/gate4/'
+);
+return;
 
     return;
   } else {
