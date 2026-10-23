@@ -501,28 +501,22 @@ function checkWord(number) {
   const input = document.getElementById("a" + number);
   const feedback = document.getElementById("f" + number);
 
-  if (solved[number - 1]) return;
+  if (!input || !feedback || solved[number - 1]) return;
 
   if (normalize(input.value) === answers[number - 1]) {
     solved[number - 1] = true;
-
     feedback.textContent = "Correct.";
     feedback.className = "feedback good";
-
     input.disabled = true;
     input.style.borderColor = "#4ade80";
-
     input.parentElement.querySelector("button").disabled = true;
 
     if (solved.every(Boolean)) {
       document.getElementById("vault").classList.add("show");
-
-      setTimeout(() => {
-        document.getElementById("vault").scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }, 150);
+      document.getElementById("vault").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
     }
   } else {
     feedback.textContent = "Incorrect. Try again.";
@@ -530,24 +524,18 @@ function checkWord(number) {
   }
 }
 
-
-
 function checkCode() {
   const correctNumbers = ["60", "5", "20", "4", "1000", "100"];
   let numbersCorrect = true;
 
   correctNumbers.forEach((correct, index) => {
     const input = document.getElementById("n" + (index + 1));
-    const value = input.value.trim();
+    const isCorrect = input.value.trim() === correct;
 
-    input.classList.remove("correct", "incorrect");
+    input.classList.toggle("correct", isCorrect);
+    input.classList.toggle("incorrect", !isCorrect);
 
-    if (value === correct) {
-      input.classList.add("correct");
-    } else {
-      input.classList.add("incorrect");
-      numbersCorrect = false;
-    }
+    if (!isCorrect) numbersCorrect = false;
   });
 
   const resultInput = document.getElementById("vault-result");
@@ -563,9 +551,8 @@ function checkCode() {
     : "#301416";
 
   if (numbersCorrect && resultCorrect) {
-    feedback.textContent = "Access granted. Redirecting to the next fragment...";
+    feedback.textContent = "Access granted. Proceeding to the next fragment...";
     feedback.className = "feedback good";
-
     document.getElementById("treasure").classList.add("show");
 
     document.querySelectorAll(".number-input").forEach(input => {
@@ -575,52 +562,13 @@ function checkCode() {
     resultInput.disabled = true;
     document.getElementById("unlock-button").disabled = true;
 
-    // الانتقال إلى Gate 5 بعد ظهور رسالة الفوز
     setTimeout(() => {
       window.location.href =
         "https://doublurry21-bit.github.io/Scientia/gate5/";
-    }, 1800);
-
+    }, 1500);
   } else {
     feedback.textContent =
-      "Incorrect Result\n" +
-      "The numbers are incorrect. Therefore, the result is incorrect.\n" +
-      "Try again.";
-
-    feedback.className = "feedback bad";
-  }
-}
-
-  const resultInput = document.getElementById("vault-result");
-  const feedback = document.getElementById("vault-feedback");
-  const resultCorrect = resultInput.value.trim() === "1280";
-
-  resultInput.style.border = resultCorrect
-    ? "2px solid #4ade80"
-    : "2px solid #f87171";
-
-  resultInput.style.background = resultCorrect
-    ? "#10291b"
-    : "#301416";
-
-  if (numbersCorrect && resultCorrect) {
-    feedback.textContent = "Access granted.";
-    feedback.className = "feedback good";
-
-    document.getElementById("treasure").classList.add("show");
-
-    document.querySelectorAll(".number-input").forEach(input => {
-      input.disabled = true;
-    });
-
-    resultInput.disabled = true;
-    document.getElementById("unlock-button").disabled = true;
-  } else {
-    feedback.textContent =
-      "Incorrect Result\n" +
-      "The numbers are incorrect. Therefore, the result is incorrect.\n" +
-      "Try again.";
-
+      "Incorrect. Check the six numbers and the result, then try again.";
     feedback.className = "feedback bad";
   }
 }
