@@ -530,6 +530,8 @@ function checkWord(number) {
   }
 }
 
+
+
 function checkCode() {
   const correctNumbers = ["60", "5", "20", "4", "1000", "100"];
   let numbersCorrect = true;
@@ -547,6 +549,47 @@ function checkCode() {
       numbersCorrect = false;
     }
   });
+
+  const resultInput = document.getElementById("vault-result");
+  const feedback = document.getElementById("vault-feedback");
+  const resultCorrect = resultInput.value.trim() === "1280";
+
+  resultInput.style.border = resultCorrect
+    ? "2px solid #4ade80"
+    : "2px solid #f87171";
+
+  resultInput.style.background = resultCorrect
+    ? "#10291b"
+    : "#301416";
+
+  if (numbersCorrect && resultCorrect) {
+    feedback.textContent = "Access granted. Redirecting to the next fragment...";
+    feedback.className = "feedback good";
+
+    document.getElementById("treasure").classList.add("show");
+
+    document.querySelectorAll(".number-input").forEach(input => {
+      input.disabled = true;
+    });
+
+    resultInput.disabled = true;
+    document.getElementById("unlock-button").disabled = true;
+
+    // الانتقال إلى Gate 5 بعد ظهور رسالة الفوز
+    setTimeout(() => {
+      window.location.href =
+        "https://doublurry21-bit.github.io/Scientia/gate5/";
+    }, 1800);
+
+  } else {
+    feedback.textContent =
+      "Incorrect Result\n" +
+      "The numbers are incorrect. Therefore, the result is incorrect.\n" +
+      "Try again.";
+
+    feedback.className = "feedback bad";
+  }
+}
 
   const resultInput = document.getElementById("vault-result");
   const feedback = document.getElementById("vault-feedback");
