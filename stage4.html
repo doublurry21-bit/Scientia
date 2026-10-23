@@ -8,7 +8,7 @@
 <style>
 :root{color-scheme:dark;--bg:#080d18;--panel:#111a2b;--panel2:#172238;--line:#293750;--text:#edf3ff;--muted:#a9b7ce;--accent:#76d7d0;--warn:#f4c978;--bad:#ff9b9b;--good:#9de2b0}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#16243a 0,#080d18 58%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.75}
-main{max-width:980px;margin:auto;padding:20px 14px 56px}.eyebrow{letter-spacing:.12em;color:var(--accent);font-size:.78rem;font-weight:800}.hero,.panel,.evidence,.hypothesis,.result{background:rgba(17,26,43,.94);border:1px solid var(--line);border-radius:18px}.hero{padding:24px;margin-bottom:16px;position:relative;overflow:hidden}.hero:after{content:"04";position:absolute;left:18px;top:-25px;font-size:9rem;font-weight:900;color:#ffffff08;pointer-events:none}.hero h1{font-size:clamp(1.8rem,6vw,3rem);line-height:1.2;margin:8px 0}.hero p{max-width:740px;color:#d3deef}.pill{display:inline-block;border:1px solid #39566a;border-radius:999px;padding:3px 10px;color:var(--accent);font-size:.8rem}.panel{padding:18px;margin:16px 0}.panel h2{margin:0 0 10px;font-size:1.25rem}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:12px}.evidence{padding:0;overflow:hidden}.evbtn{width:100%;text-align:right;display:flex;gap:12px;align-items:flex-start;padding:15px;background:transparent;border:0;color:inherit;font:inherit;cursor:pointer}.evnum{flex:0 0 48px;height:42px;border-radius:12px;background:#20334b;color:var(--accent);display:grid;place-items:center;font-weight:900}.evtitle{font-weight:800}.evhint{font-size:.9rem;color:var(--muted)}.evbody{display:none;padding:0 16px 17px}.evidence.open .evbody{display:block}.evidence.open{border-color:#4d7b87}.log{white-space:pre-wrap;direction:ltr;text-align:left;background:#080e18;border:1px solid #2a3b51;border-radius:12px;padding:13px;font: .87rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;color:#c9f1e9}.progress{height:8px;background:#263248;border-radius:99px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}.small{font-size:.86rem}.hypothesis{padding:13px;display:flex;align-items:flex-start;gap:10px}.hypothesis input{margin-top:8px;accent-color:var(--accent);width:18px;height:18px;flex-shrink:0}.hypothesis label{cursor:pointer}.hypothesis .code{font-weight:900;color:var(--accent);display:inline-block;min-width:24px}.btn{border:1px solid #4c7183;background:#183344;color:#f2ffff;border-radius:12px;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.secondary{background:transparent;border-color:var(--line);color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.status{margin-top:12px;color:var(--muted);font-size:.93rem}.result{padding:18px;margin-top:16px;display:none}.result.show{display:block}.result.good{border-color:#427a5a}.result.bad{border-color:#9a5555}.result h3{margin:0 0 8px}.notice{border-right:3px solid var(--warn);padding:8px 12px;color:#f7dfad;background:#211d18;border-radius:8px}.attempt-box{border:1px solid #725d37;background:#211d18;border-radius:12px;padding:12px 14px;margin:12px 0;color:#f7dfad}.attempt-box strong{color:#ffe5a5}.attempt-box .timer{font-variant-numeric:tabular-nums;font-weight:900;font-size:1.1rem;direction:ltr;display:inline-block}.foot{margin-top:24px;text-align:center;color:#7f90a9;font-size:.82rem}a{color:var(--accent)}@media(max-width:480px){main{padding:12px 10px 40px}.hero,.panel{padding:16px}.hypothesis{padding:10px}}
+main{max-width:980px;margin:auto;padding:20px 14px 56px}.eyebrow{letter-spacing:.12em;color:var(--accent);font-size:.78rem;font-weight:800}.hero,.panel,.evidence,.hypothesis,.result{background:rgba(17,26,43,.94);border:1px solid var(--line);border-radius:18px}.hero{padding:24px;margin-bottom:16px;position:relative;overflow:hidden}.hero:after{content:"04";position:absolute;left:18px;top:-25px;font-size:9rem;font-weight:900;color:#ffffff08;pointer-events:none}.hero h1{font-size:clamp(1.8rem,6vw,3rem);line-height:1.2;margin:8px 0}.hero p{max-width:740px;color:#d3deef}.pill{display:inline-block;border:1px solid #39566a;border-radius:999px;padding:3px 10px;color:var(--accent);font-size:.8rem}.panel{padding:18px;margin:16px 0}.panel h2{margin:0 0 10px;font-size:1.25rem}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:12px}.evidence{padding:0;overflow:hidden}.evbtn{width:100%;text-align:right;display:flex;gap:12px;align-items:flex-start;padding:15px;background:transparent;border:0;color:inherit;font:inherit;cursor:pointer}.evnum{flex:0 0 48px;height:42px;border-radius:12px;background:#20334b;color:var(--accent);display:grid;place-items:center;font-weight:900}.evtitle{font-weight:800}.evhint{font-size:.9rem;color:var(--muted)}.evbody{display:none;padding:0 16px 17px}.evidence.open .evbody{display:block}.evidence.open{border-color:#4d7b87}.log{white-space:pre-wrap;direction:ltr;text-align:left;background:#080e18;border:1px solid #2a3b51;border-radius:12px;padding:13px;font:.87rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;color:#c9f1e9}.progress{height:8px;background:#263248;border-radius:99px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}.small{font-size:.86rem}.hypothesis{padding:13px;display:flex;align-items:flex-start;gap:10px}.hypothesis input{margin-top:8px;accent-color:var(--accent);width:18px;height:18px;flex-shrink:0}.hypothesis label{cursor:pointer}.hypothesis .code{font-weight:900;color:var(--accent);display:inline-block;min-width:24px}.btn{border:1px solid #4c7183;background:#183344;color:#f2ffff;border-radius:12px;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.secondary{background:transparent;border-color:var(--line);color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.status{margin-top:12px;color:var(--muted);font-size:.93rem}.result{padding:18px;margin-top:16px;display:none}.result.show{display:block}.result.good{border-color:#427a5a}.result.bad{border-color:#9a5555}.result h3{margin:0 0 8px}.notice{border-right:3px solid var(--warn);padding:8px 12px;color:#f7dfad;background:#211d18;border-radius:8px}.attempt-box{border:1px solid #725d37;background:#211d18;border-radius:12px;padding:12px 14px;margin:12px 0;color:#f7dfad}.attempt-box strong{color:#ffe5a5}.attempt-box .timer{font-variant-numeric:tabular-nums;font-weight:900;font-size:1.1rem;direction:ltr;display:inline-block}.foot{margin-top:24px;text-align:center;color:#7f90a9;font-size:.82rem}a{color:var(--accent)}@media(max-width:480px){main{padding:12px 10px 40px}.hero,.panel{padding:16px}.hypothesis{padding:10px}}
 </style>
 </head>
 <body>
@@ -114,6 +114,7 @@ ADC CALIBRATION: DUE IN 30 DAYS — SCHEDULED</div>
   </section>
   <p class="foot">SCIENTIA · PROJECT ZERO · ملف تحقيق افتراضي</p>
 </main>
+
 <script>
 const hypotheses = [
 ["A","وجود المادة المستهدفة في العينات الفارغة.",["E1","E2"]],
@@ -136,11 +137,13 @@ const hypotheses = [
 ["R","القيمة المرجعية المستخدمة في المعايرة خاطئة.",["E5"]],
 ["S","ساعة الجهاز تربط القراءات بدرجات حرارة غير صحيحة.",["E3","E5"]]
 ];
+
 const opened = new Set();
 const ATTEMPT_KEY = "scientia_project_zero_stage4_attempts_v1";
 const WAIT_HOURS = [12, 24, 36];
 let attemptState = loadAttemptState();
 let timerInterval = null;
+
 function loadAttemptState(){
   try {
     const saved = JSON.parse(localStorage.getItem(ATTEMPT_KEY) || "null");
@@ -148,17 +151,21 @@ function loadAttemptState(){
   } catch(e) {}
   return {used:0, until:0, passed:false};
 }
+
 function saveAttemptState(){
   try { localStorage.setItem(ATTEMPT_KEY, JSON.stringify(attemptState)); } catch(e) {}
 }
+
 function remainingText(ms){
   const total=Math.max(0,Math.ceil(ms/1000));
   const h=Math.floor(total/3600), m=Math.floor((total%3600)/60), sec=total%60;
   return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 }
+
 function updateAttemptUI(){
   const notice=document.getElementById("attemptNotice"), btn=document.getElementById("submitBtn");
   const now=Date.now();
+
   if(attemptState.passed){
     notice.innerHTML="<strong>تم اجتياز المرحلة.</strong><br>تم تسجيل نجاح هذه المرحلة على هذا المتصفح.";
     btn.disabled=true;
@@ -168,99 +175,194 @@ function updateAttemptUI(){
   } else if(attemptState.until>now){
     notice.innerHTML=`<strong>المحاولة ${attemptState.used+1} مغلقة مؤقتًا.</strong><br>المتبقي قبل فتحها: <span class="timer" id="attemptTimer">${remainingText(attemptState.until-now)}</span><br><span class="small">عدد المحاولات المستخدمة: ${attemptState.used} من 4.</span>`;
     btn.disabled=true;
+
     if(timerInterval) clearInterval(timerInterval);
+
     timerInterval=setInterval(()=>{
       const el=document.getElementById("attemptTimer");
-      if(!el || attemptState.passed || attemptState.used>=4){clearInterval(timerInterval);timerInterval=null;updateAttemptUI();return;}
+
+      if(!el || attemptState.passed || attemptState.used>=4){
+        clearInterval(timerInterval);
+        timerInterval=null;
+        updateAttemptUI();
+        return;
+      }
+
       const left=attemptState.until-Date.now();
-      if(left<=0){clearInterval(timerInterval);timerInterval=null;updateAttemptUI();return;}
+
+      if(left<=0){
+        clearInterval(timerInterval);
+        timerInterval=null;
+        updateAttemptUI();
+        return;
+      }
+
       el.textContent=remainingText(left);
     },1000);
   } else {
     notice.innerHTML=`<strong>المحاولة المتاحة: ${attemptState.used+1} من 4.</strong><br>${attemptState.used===0?"يمكنك تقديم إجابتك الآن.":"انتهى وقت الانتظار. يمكنك تقديم محاولة واحدة الآن."}<br><span class="small">بعد إجابة خاطئة يبدأ مؤقت الانتظار التالي.</span>`;
-    if(timerInterval){clearInterval(timerInterval);timerInterval=null;}
+
+    if(timerInterval){
+      clearInterval(timerInterval);
+      timerInterval=null;
+    }
   }
 }
 
 const evidenceCards = [...document.querySelectorAll(".evidence")];
+
 evidenceCards.forEach(card=>{
   const btn=card.querySelector(".evbtn");
+
   btn.addEventListener("click",()=>{
     card.classList.toggle("open");
     btn.setAttribute("aria-expanded",card.classList.contains("open")?"true":"false");
+
     if(card.classList.contains("open")) opened.add(card.dataset.e);
+
     updateEvidence();
   });
 });
+
 const grid=document.getElementById("hypothesisGrid");
+
 hypotheses.forEach(([code,desc,validEvidence])=>{
   const item=document.createElement("div");
   item.className="hypothesis";
-  const options=['<option value="">اختر الدليل</option>',...['E1','E2','E3','E4','E5','E6'].map(e=>`<option value="${e}">${e}</option>`)].join('');
+
+  const options=[
+    '<option value="">اختر الدليل</option>',
+    ...['E1','E2','E3','E4','E5','E6'].map(e=>`<option value="${e}">${e}</option>`)
+  ].join('');
+
   item.innerHTML=`<div style="flex:1;min-width:0"><label for="h-${code}"><span class="code">${code}</span>${desc}</label><select id="h-${code}" data-valid="${validEvidence.join(',')}" aria-label="الدليل الذي يستبعد الفرضية ${code}" style="display:block;width:100%;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--line);background:#080e18;color:var(--text);font:inherit">${options}</select><div class="small muted" id="feedback-${code}" aria-live="polite">اختر الدليل الذي يساعد على استبعاد هذه الفرضية.</div></div>`;
+
   grid.appendChild(item);
 });
+
 function updateEvidence(){
   document.getElementById("progressText").textContent=`تم فتح ${opened.size} من 6 أدلة.`;
   document.getElementById("progressBar").style.width=(opened.size/6*100)+"%";
   updateLocks();
 }
+
 function updateLocks(){
   const count=hypotheses.filter(([c,,valid])=>{
-    const el=document.getElementById("h-"+c), chosen=el.value;
+    const el=document.getElementById("h-"+c);
+    const chosen=el.value;
     const correct=valid.includes(chosen);
     const feedback=document.getElementById("feedback-"+c);
-    feedback.textContent=chosen?(correct?"اختيار متوافق مع الأدلة.":"هذا الدليل لا يستبعد هذه الفرضية وحده؛ راجع محتواه."):"اختر الدليل الذي يساعد على استبعاد هذه الفرضية.";
-    feedback.style.color=chosen?(correct?"var(--good)":"var(--warn)"):"var(--muted)";
+
+    feedback.textContent=chosen
+      ?(correct?"اختيار متوافق مع الأدلة.":"هذا الدليل لا يستبعد هذه الفرضية وحده؛ راجع محتواه.")
+      :"اختر الدليل الذي يساعد على استبعاد هذه الفرضية.";
+
+    feedback.style.color=chosen
+      ?(correct?"var(--good)":"var(--warn)")
+      :"var(--muted)";
+
     return correct;
   }).length;
+
   document.getElementById("deductionStatus").textContent=`تم تبرير استبعاد ${count} من 19 فرضية منافسة.`;
   document.getElementById("deductionBar").style.width=(count/19*100)+"%";
+
   const allEvidence=opened.size===6;
   const allExcluded=count===19;
   const ready=allEvidence&&allExcluded;
+
   document.getElementById("submitBtn").disabled=!ready;
-  document.getElementById("lockStatus").textContent=!allEvidence?"افتح الأدلة الستة أولًا.":!allExcluded?`الأدلة مكتملة. اربط الفرضيات بالأدلة (${count}/19) لتفعيل التقديم.`:"اكتمل الملف. يمكنك الآن تثبيت الاستنتاج النهائي.";
+
+  document.getElementById("lockStatus").textContent=
+    !allEvidence
+      ?"افتح الأدلة الستة أولًا."
+      :!allExcluded
+        ?`الأدلة مكتملة. اربط الفرضيات بالأدلة (${count}/19) لتفعيل التقديم.`
+        :"اكتمل الملف. يمكنك الآن تثبيت الاستنتاج النهائي.";
+
+  updateAttemptUI();
 }
+
 grid.addEventListener("change",updateLocks);
+
 document.getElementById("submitBtn").addEventListener("click",()=>{
-  if(attemptState.passed || attemptState.used>=4 || attemptState.until>Date.now()) { updateAttemptUI(); return; }
+  if(attemptState.passed || attemptState.used>=4 || attemptState.until>Date.now()){
+    updateAttemptUI();
+    return;
+  }
+
   const answer=document.getElementById("finalAnswer").value;
   const result=document.getElementById("result");
+
+  if(!answer){
+    result.className="result show bad";
+    result.innerHTML="<h3>اختر فرضية أولًا</h3><p>حدد الاستنتاج النهائي قبل التثبيت.</p>";
+    return;
+  }
+
   result.className="result show";
   attemptState.used += 1;
+
   if(answer==="T"){
     attemptState.passed = true;
     attemptState.until = 0;
-    result.classList.add("good");
- result.innerHTML="<h3>إجابة دقيقة، أيها المحقّق!</h3><p>اختلاف المعامل في الذاكرة، وفشل التحقق من سلامة البيانات، ونتائج الإصلاح تدعم أن الخلل كان في نقل المعامل، لا في المعادلة أو دارة التعويض.</p><p><strong>أحسنت! لقد اجتزت المرحلة الرابعة.</strong></p><p>جارٍ الانتقال إلى المرحلة التالية...</p>";
 
-setTimeout(() => {
-  window.location.href = 'https://doublurry21-bit.github.io/Scientia/gate4/';
-}, 2000);
+    result.classList.add("good");
+    result.innerHTML="<h3>إجابة دقيقة، أيها المحقّق!</h3><p>اختلاف المعامل في الذاكرة، وفشل التحقق من سلامة البيانات، ونتائج الإصلاح تدعم أن الخلل كان في نقل المعامل، لا في المعادلة أو دارة التعويض.</p><p><strong>أحسنت! لقد اجتزت المرحلة الرابعة.</strong></p><p>جارٍ الانتقال إلى المرحلة التالية...</p>";
+
+    saveAttemptState();
+    updateAttemptUI();
+
+    setTimeout(() => {
+      window.location.href = 'https://doublurry21-bit.github.io/Scientia/gate4/';
+    }, 2000);
+
+    return;
+  } else {
     result.classList.add("bad");
+
     if(attemptState.used < 4){
       const wait=WAIT_HOURS[attemptState.used-1] * 60 * 60 * 1000;
       attemptState.until=Date.now()+wait;
+
       result.innerHTML=`<h3>الفرضية لا تفسّر جميع الأدلة</h3><p>راجع اختلاف المعامل المرسل عن القيمة المقروءة من الذاكرة، ثم قارن ذلك بتقرير ما بعد الإصلاح.</p><p><strong>استهلكت المحاولة ${attemptState.used} من 4.</strong> ${WAIT_HOURS[attemptState.used-1]} ساعة انتظار قبل المحاولة التالية.</p>`;
     } else {
       attemptState.until=0;
+
       result.innerHTML="<h3>انتهت المحاولات</h3><p>هذه هي المحاولة الرابعة والأخيرة. لن تتمكن من تقديم إجابات إضافية من هذا المتصفح.</p>";
     }
   }
+
   saveAttemptState();
   updateAttemptUI();
 });
+
 document.getElementById("resetBtn").addEventListener("click",()=>{
   opened.clear();
-  evidenceCards.forEach(c=>{c.classList.remove("open");c.querySelector(".evbtn").setAttribute("aria-expanded","false")});
-  hypotheses.forEach(([c])=>document.getElementById("h-"+c).value="");
+
+  evidenceCards.forEach(c=>{
+    c.classList.remove("open");
+    c.querySelector(".evbtn").setAttribute("aria-expanded","false");
+  });
+
+  hypotheses.forEach(([c])=>{
+    document.getElementById("h-"+c).value="";
+  });
+
   document.getElementById("finalAnswer").value="";
-  const r=document.getElementById("result");r.className="result";r.innerHTML="";
-  updateEvidence();updateLocks();
+
+  const r=document.getElementById("result");
+  r.className="result";
+  r.innerHTML="";
+
+  updateEvidence();
+  updateLocks();
   updateAttemptUI();
 });
-updateEvidence();updateLocks();updateAttemptUI();
+
+updateEvidence();
+updateLocks();
+updateAttemptUI();
 </script>
 </body>
 </html>
